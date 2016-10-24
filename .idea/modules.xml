@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TestModules.iml" filepath="$PROJECT_DIR$/TestModules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customkeyboard/customkeyboard.iml" filepath="$PROJECT_DIR$/customkeyboard/customkeyboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customkeyboardbydialog/customkeyboardbydialog.iml" filepath="$PROJECT_DIR$/customkeyboardbydialog/customkeyboardbydialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customkeyboardbyedittext/customkeyboardbyedittext.iml" filepath="$PROJECT_DIR$/customkeyboardbyedittext/customkeyboardbyedittext.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dbflowtest/dbflowtest.iml" filepath="$PROJECT_DIR$/dbflowtest/dbflowtest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/keyboardtest/keyboardtest.iml" filepath="$PROJECT_DIR$/keyboardtest/keyboardtest.iml" />
+    </modules>
+  </component>
+</project>
