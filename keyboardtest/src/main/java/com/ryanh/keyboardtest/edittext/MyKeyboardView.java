@@ -56,11 +56,11 @@ public class MyKeyboardView extends KeyboardView {
             }
 
             Drawable drawable = null;
-            if (primaryCode == -3 || key.codes[0] == -5) {
+           /* if (primaryCode == -3 || key.codes[0] == -5) {
                 drawable = mOpKeyBgDrawable;
             } else if (primaryCode != -1) {
                 drawable = mKeyBgDrawable;
-            }
+            }*/
 
             if (null != drawable) {
                 int[] state = key.getCurrentDrawableState();

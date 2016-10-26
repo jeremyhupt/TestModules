@@ -4,7 +4,7 @@
     android:keyHeight="6%p"
     android:verticalGap="1px">
     <Row
-        android:keyWidth="11.11111111%p"
+        android:keyWidth="10%p"
         android:verticalGap="10px">
         <Key
             android:codes="49"
@@ -33,6 +33,9 @@
         <Key
             android:codes="57"
             android:keyLabel="9" />
+        <Key
+            android:codes="48"
+            android:keyLabel="0" />
     </Row>
     <Row android:keyWidth="11.11111111%p">
         <Key
@@ -126,7 +129,7 @@
 
     <Row android:rowEdgeFlags="bottom">
         <Key
-            android:codes="-4"
+            android:codes="-3"
             android:keyEdgeFlags="left"
             android:keyLabel="下一步"
             android:keyWidth="77.7777778%p" />

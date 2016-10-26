@@ -11,10 +11,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity android:name=".dialog.DialogActivity"/>
+
+        <activity android:name=".edittext.EditTextActivity"/>
+
+        <activity android:name=".platenumber.PlateNumberActivity"/>
+
+
     </application>
 
-    <activity android:name=".dialog.DialogActivity"/>
-
-    <activity android:name=".edittext.EditTextActivity"/>
 
 </manifest>

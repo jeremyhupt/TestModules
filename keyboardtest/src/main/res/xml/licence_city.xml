@@ -46,9 +46,9 @@
 		<Key android:codes="34255" android:keyLabel="藏" />
 		<Key android:codes="28207" android:keyLabel="港" />
 		<Key android:codes="28595" android:keyLabel="澳" />
-		<Key android:codes="32" android:keyLabel=" " />
-		<Key android:codes="32" android:keyLabel=" " />
-		<Key android:codes="32" android:keyLabel=" " />
+		<Key android:keyLabel=" " />
+		<Key android:keyLabel=" " />
+		<Key android:keyLabel=" " />
 	</Row>
 
 </Keyboard>

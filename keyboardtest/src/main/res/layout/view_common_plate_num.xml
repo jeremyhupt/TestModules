@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/gray"
+    android:orientation="horizontal">
+
+    <com.ryanh.keyboardtest.platenumber.CityEditText
+        android:id="@+id/common_license_city"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:cursorVisible="false"
+        android:maxLength="1"
+        android:minLines="1"
+        android:paddingBottom="16dp"
+        android:paddingTop="16dp"
+        android:textColorHint="@color/text_gray"
+        app:random_keys="true"
+        app:xml="@xml/licence_city" />
+
+    <com.ryanh.keyboardtest.platenumber.NumberEditText
+        android:id="@+id/common_license_num"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:hint="请填写车牌号"
+        android:imeOptions="actionNext"
+        android:singleLine="true"
+        android:maxLength="6"
+        android:nextFocusForward="@+id/down"
+        android:paddingBottom="16dp"
+        android:paddingTop="16dp"
+        app:random_keys="true"
+        app:xml="@xml/licence_num" />
+
+</LinearLayout>

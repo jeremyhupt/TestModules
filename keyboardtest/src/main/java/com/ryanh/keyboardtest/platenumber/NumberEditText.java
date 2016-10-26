@@ -1,4 +1,4 @@
-package com.ryanh.keyboardtest.edittext;
+package com.ryanh.keyboardtest.platenumber;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -9,7 +9,6 @@ import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.Keyboard.Key;
 import android.inputmethodservice.KeyboardView;
 import android.os.Build;
-import android.os.SystemClock;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -35,13 +34,9 @@ import com.ryanh.keyboardtest.R;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
-public class KeyboardEditText extends EditText implements KeyboardView.OnKeyboardActionListener {
+public class NumberEditText extends EditText implements KeyboardView.OnKeyboardActionListener {
 
     private static final String TAG = "myLog";
     private Keyboard mKeyboard;
@@ -74,15 +69,15 @@ public class KeyboardEditText extends EditText implements KeyboardView.OnKeyboar
     public static float density = 1.0f;
     public static int densityDpi = 160;
 
-    public KeyboardEditText(Context context) {
+    public NumberEditText(Context context) {
         this(context, null);
     }
 
-    public KeyboardEditText(Context context, AttributeSet attrs) {
+    public NumberEditText(Context context, AttributeSet attrs) {
         this(context, attrs,0);
     }
 
-    public KeyboardEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+    public NumberEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttributes(context);
         initKeyboard(context, attrs);
@@ -93,9 +88,8 @@ public class KeyboardEditText extends EditText implements KeyboardView.OnKeyboar
         if (array.hasValue(R.styleable.Keyboard_xml)) {
             Log.d(TAG,"hasValue Keyboard_xml");
             isNeedCustomKeyboard = true;
-//            int xmlId = array.getResourceId(R.styleable.Keyboard_xml, 0);
-//            mKeyboard = new Keyboard(context, xmlId);
-            mKeyboard = new Keyboard(context, R.xml.licence_city);
+            int xmlId = array.getResourceId(R.styleable.Keyboard_xml, 0);
+            mKeyboard = new Keyboard(context, xmlId);
 
             mKeyboardView = (KeyboardView) LayoutInflater.from(context).inflate(R.layout.my_keyboard_view, null);
             if (array.hasValue(R.styleable.Keyboard_random_keys)) {
@@ -133,7 +127,7 @@ public class KeyboardEditText extends EditText implements KeyboardView.OnKeyboar
         array.recycle();
     }
 
-    private void digRandomKey(Keyboard keyboard) {
+    /*private void digRandomKey(Keyboard keyboard) {
         if (keyboard == null) {
             return;
         }
@@ -176,12 +170,12 @@ public class KeyboardEditText extends EditText implements KeyboardView.OnKeyboar
             newKey.label =resultModel.getLabel();
             newKey.codes[0] = resultModel.getCode();
         }
-    }
+    }*/
 
-    private boolean isNumber(String str) {
+    /*private boolean isNumber(String str) {
         String wordStr = "0123456789";
         return wordStr.contains(str);
-    }
+    }*/
 
     private void initAttributes(Context context) {
         initScreenParams(context);
@@ -198,6 +192,8 @@ public class KeyboardEditText extends EditText implements KeyboardView.OnKeyboar
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     hideKeyboard();
+                } else {
+                    showKeyboard();
                 }
             }
         });
@@ -317,8 +313,9 @@ public class KeyboardEditText extends EditText implements KeyboardView.OnKeyboar
             //可以直接输入的字符(如0-9,.)，他们在键盘映射xml中的keycode值必须配置为该字符的ASCII码
             editable.insert(start, key.label);
 
-        }else{
+        }else if(primaryCode == EditorInfo.IME_ACTION_DONE){
             //其他一些暂未开放的键指令，如next到下一个输入框等指令
+
         }
     }
 
@@ -473,9 +470,7 @@ public class KeyboardEditText extends EditText implements KeyboardView.OnKeyboar
         }
     }
 
-
-
-    class KeyModel {
+    /*class KeyModel {
         private Integer code;
         private String label;
 
@@ -504,5 +499,5 @@ public class KeyboardEditText extends EditText implements KeyboardView.OnKeyboar
         public String toString() {
             return "code:"+code+","+"label:"+label;
         }
-    }
+    }*/
 }

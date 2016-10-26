@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.ryanh.keyboardtest.edittext.MyKeyboardView
+<android.inputmethodservice.KeyboardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:background="@color/gray"
-    android:keyBackground="@drawable/btn_keyboard_key"
+    android:keyBackground="@color/white"
     android:keyTextColor="@color/black"
     android:paddingTop="1px"
+    android:shadowColor="@color/white"
+    android:shadowRadius="0.0"
     />
