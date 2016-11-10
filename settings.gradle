@@ -1,1 +1,1 @@
-include ':app', ':dbflowtest', ':customkeyboard', ':customkeyboardbydialog', ':customkeyboardbyedittext', ':keyboardtest'
+include ':app', ':dbflowtest', ':keyboardtest'

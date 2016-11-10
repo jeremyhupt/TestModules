@@ -9,9 +9,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/customkeyboard" />
-            <option value="$PROJECT_DIR$/customkeyboardbydialog" />
-            <option value="$PROJECT_DIR$/customkeyboardbyedittext" />
             <option value="$PROJECT_DIR$/dbflowtest" />
             <option value="$PROJECT_DIR$/keyboardtest" />
           </set>
