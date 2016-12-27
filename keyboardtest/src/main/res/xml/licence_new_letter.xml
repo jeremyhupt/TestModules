@@ -1,45 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-    android:horizontalGap="1px"
-    android:keyHeight="6%p"
-    android:verticalGap="1px">
-    <Row
-        android:keyWidth="10%p"
-        android:verticalGap="10px">
+    android:horizontalGap="4.5dp"
+    android:keyHeight="7%p"
+    android:keyWidth="8.6%p"
+    android:verticalGap="7dp">
+    <Row>
         <Key
-            android:codes="49"
-            android:keyLabel="1" />
+            android:codes="-9"
+            android:keyEdgeFlags="left"
+            android:keyIcon="@drawable/ic_return" />
         <Key
-            android:codes="50"
+            android:codes="-10"
             android:keyLabel="2" />
-        <Key
-            android:codes="51"
-            android:keyLabel="3" />
-        <Key
-            android:codes="52"
-            android:keyLabel="4" />
-        <Key
-            android:codes="53"
-            android:keyLabel="5" />
-        <Key
-            android:codes="54"
-            android:keyLabel="6" />
-        <Key
-            android:codes="55"
-            android:keyLabel="7" />
-        <Key
-            android:codes="56"
-            android:keyLabel="8" />
-        <Key
-            android:codes="57"
-            android:keyLabel="9" />
-        <Key
-            android:codes="48"
-            android:keyLabel="0" />
     </Row>
-    <Row android:keyWidth="11.11111111%p">
+
+    <Row>
         <Key
             android:codes="81"
+            android:keyEdgeFlags="left"
             android:keyLabel="Q" />
         <Key
             android:codes="87"
@@ -65,11 +43,17 @@
         <Key
             android:codes="79"
             android:keyLabel="O" />
+        <Key
+            android:codes="80"
+            android:keyEdgeFlags="right"
+            android:keyLabel="P" />
     </Row>
 
-    <Row android:keyWidth="11.11111111%p">
+    <Row>
         <Key
             android:codes="65"
+            android:horizontalGap="4.999995%p"
+            android:keyEdgeFlags="left"
             android:keyLabel="A" />
         <Key
             android:codes="83"
@@ -93,13 +77,20 @@
             android:codes="75"
             android:keyLabel="K" />
         <Key
-            android:codes="80"
-            android:keyLabel="P" />
+            android:codes="76"
+            android:keyEdgeFlags="right"
+            android:keyLabel="Ｌ" />
     </Row>
 
-    <Row android:keyWidth="11.11111111%p">
+    <Row>
+        <Key
+            android:codes="-1"
+            android:keyWidth="10%p"
+            android:keyEdgeFlags="left"
+            android:keyIcon="@drawable/ic_capital" />
         <Key
             android:codes="90"
+            android:horizontalGap="3.5%p"
             android:keyLabel="Z" />
         <Key
             android:codes="88"
@@ -119,26 +110,12 @@
         <Key
             android:codes="77"
             android:keyLabel="Ｍ" />
-        <Key
-            android:codes="76"
-            android:keyLabel="Ｌ" />
-        <Key
-            android:codes="32"
-            android:keyLabel=" " />
-    </Row>
-
-    <Row android:rowEdgeFlags="bottom">
-        <Key
-            android:codes="-3"
-            android:keyEdgeFlags="left"
-            android:keyLabel="下一步"
-            android:keyWidth="77.7777778%p" />
 
         <Key
             android:codes="-5"
-            android:keyEdgeFlags="right"
-            android:keyIcon="@drawable/ic_delete"
-            android:keyWidth="22.2222222%p" />
+            android:horizontalGap="6.4%p"
+            android:keyWidth="10%p"
+            android:keyIcon="@drawable/ic_delete" />
     </Row>
 
 </Keyboard>

@@ -3,15 +3,15 @@ package com.ryanh.keyboardtest.platenumber;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.drawable.BitmapDrawable;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.os.Build;
 import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.ActionMode;
 import android.view.Display;
 import android.view.Gravity;
@@ -33,23 +33,24 @@ import com.ryanh.keyboardtest.R;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * Author:胡仲俊
- * Date: 2016 - 10 - 26
+ * Date: 2016 - 12 - 21
  * FIXME
- * Todo 城市简称带键盘控件
+ * Todo
  */
 
-public class CityEditText extends EditText implements KeyboardView.OnKeyboardActionListener {
+public class PlateNumEditText extends EditText implements KeyboardView.OnKeyboardActionListener{
 
-    private static final String TAG = "J.Log";
     private Keyboard mKeyboard;
     private KeyboardView mKeyboardView;
 
     private Window mWindow;
     private View mDecorView;
     private View mContentView;
+    private Context mContext;
 
     private PopupWindow mKeyboardWindow;
 
@@ -73,125 +74,70 @@ public class CityEditText extends EditText implements KeyboardView.OnKeyboardAct
     public static float density = 1.0f;
     public static int densityDpi = 160;
 
-    public CityEditText(Context context) {
+    public PlateNumEditText(Context context) {
         this(context, null);
     }
 
-    public CityEditText(Context context, AttributeSet attrs) {
+    public PlateNumEditText(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CityEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+    public PlateNumEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mContext = context;
         initAttributes(context);
-        initKeyboard(context, attrs);
+        this.addTextChangedListener(textChangedListener);
     }
 
-    private void initKeyboard(Context context, AttributeSet attrs) {
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.Keyboard);
-        if (array.hasValue(R.styleable.Keyboard_xml)) {
-            Log.d(TAG, "hasValue Keyboard_xml");
-            isNeedCustomKeyboard = true;
-            int xmlId = array.getResourceId(R.styleable.Keyboard_xml, 0);
-            mKeyboard = new Keyboard(context, xmlId);
+    private void initKeyboard(int xmlLayoutResId) {
+        mKeyboard = new Keyboard(mContext, xmlLayoutResId);
 
-            mKeyboardView = (KeyboardView) LayoutInflater.from(context).inflate(R.layout.view_keyboard, null);
+        mKeyboardView = (KeyboardView) LayoutInflater.from(mContext).inflate(R.layout.view_keyboard, null);
 
-            mKeyboardView.setKeyboard(mKeyboard);
-            mKeyboardView.setEnabled(true);
-            mKeyboardView.setPreviewEnabled(false);
-            mKeyboardView.setOnKeyboardActionListener(this);
+        mKeyboardView.setKeyboard(mKeyboard);
+        mKeyboardView.setEnabled(true);
+        mKeyboardView.setPreviewEnabled(false);
+        mKeyboardView.setOnKeyboardActionListener(this);
 
-            mKeyboardWindow = new PopupWindow(mKeyboardView,
-                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            mKeyboardWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-                @Override
-                public void onDismiss() {
-                    if (mScrollDistance > 0) {
-                        int temp = mScrollDistance;
-                        mScrollDistance = 0;
-                        if (null != mContentView) {
-                            mContentView.scrollBy(0, -temp);
-                        }
+        mKeyboardWindow = new PopupWindow(mKeyboardView,
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        mKeyboardWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                if (mScrollDistance > 0) {
+                    int temp = mScrollDistance;
+                    mScrollDistance = 0;
+                    if (null != mContentView) {
+                        mContentView.scrollBy(0, -temp);
                     }
                 }
-            });
-        } else {
-            isNeedCustomKeyboard = false;
-        }
-
-        array.recycle();
-    }
-
-    /*private void digRandomKey(Keyboard keyboard) {
-        if (keyboard == null) {
-            return;
-        }
-
-        List<Key> keyList = keyboard.getKeys();
-
-        // 查找出0-9的数字键
-        List<Key> newKeyList = new ArrayList<Key>();
-        for (int i = 0, size = keyList.size(); i < size; i++) {
-            Key key = keyList.get(i);
-            CharSequence label = key.label;
-            if (label != null && isNumber(label.toString())) {
-                newKeyList.add(key);
             }
-        }
+        });
 
-        int count = newKeyList.size();
-        List<KeyModel> resultList = new ArrayList<KeyModel>();
-        LinkedList<KeyModel> tempList = new LinkedList<KeyModel>();
-
-        for (int i = 0; i < count; i++) {
-            tempList.add(new KeyModel(48 + i, i + ""));
-        }
-
-        Random rand = new SecureRandom();
-        rand.setSeed(SystemClock.currentThreadTimeMillis());
-
-        for (int i = 0; i < count; i++) {
-            int num = rand.nextInt(count - i);
-            Log.d(TAG, " rand num" + num);
-            KeyModel model = tempList.get(num);
-            Log.d(TAG, model.toString());
-            resultList.add(new KeyModel(model.getCode(), model.getLabel()));
-            tempList.remove(num);
-        }
-
-        for (int i = 0, size = newKeyList.size(); i < size; i++) {
-            Key newKey = newKeyList.get(i);
-            KeyModel resultModel = resultList.get(i);
-            newKey.label = resultModel.getLabel();
-            newKey.codes[0] = resultModel.getCode();
-        }
-    }*/
-
-    /*private boolean isNumber(String str) {
-        String wordStr = "0123456789";
-        return wordStr.contains(str);
-    }*/
+        hideSysInput();
+        showKeyboard();
+    }
 
     private void initAttributes(Context context) {
         initScreenParams(context);
         this.setLongClickable(false); // 设置EditText不可长按
         this.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
-
         removeCopyAbility();
 
         if (this.getText() != null) {
             this.setSelection(this.getText().length());
         }
 
-        this.setOnFocusChangeListener(new OnFocusChangeListener() {
+        /*this.setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     hideKeyboard();
+                } else {
+                    showKeyboard();
                 }
             }
-        });
+        });*/
     }
 
     @TargetApi(11)
@@ -279,53 +225,45 @@ public class CityEditText extends EditText implements KeyboardView.OnKeyboardAct
 
     @Override
     public void onPress(int primaryCode) {
+
     }
 
     @Override
     public void onRelease(int primaryCode) {
+
     }
 
     @Override
     public void onKey(int primaryCode, int[] keyCodes) {
-        if(primaryCode != 32) {
-
             Editable editable = this.getText();
-            editable.clear();
             int start = this.getSelectionStart();
-        /*if (primaryCode == Keyboard.KEYCODE_CANCEL) {// 隐藏键盘
-            hideKeyboard();
-        } else if (primaryCode == Keyboard.KEYCODE_DELETE) {// 回退
-            if (editable != null && editable.length() > 0) {
-                if (start > 0) {
-                    editable.delete(start - 1, start);
+            if (primaryCode == Keyboard.KEYCODE_CANCEL) {// 隐藏键盘
+                hideKeyboard();
+            } else if (primaryCode == Keyboard.KEYCODE_DELETE) {// 回退
+                if (editable != null && editable.length() > 0) {
+                    if (start > 0) {
+                        editable.delete(start - 1, start);
+                    }
                 }
-            }
-        } else if (0x0 <= primaryCode && primaryCode <= 0x7f) {
-            //可以直接输入的字符(如0-9,.)，他们在键盘映射xml中的keycode值必须配置为该字符的ASCII码
-            editable.insert(start, Character.toString((char) primaryCode));
-        } else if (primaryCode > 0x7f && primaryCode != 32) {
-
-            Key key = getKeyByKeyCode(primaryCode);
-            //可以直接输入的字符(如0-9,.)，他们在键盘映射xml中的keycode值必须配置为该字符的ASCII码
-            editable.insert(start, key.label);
-            editable.clear();
-        } else {
-            //其他一些暂未开放的键指令，如next到下一个输入框等指令
-        }*/
-
-            if (primaryCode > 0x7f) {
-//                Key key = getKeyByKeyCode(primaryCode);
+            } else if (0x0 <= primaryCode && primaryCode <= 0x7f) {
+                //可以直接输入的字符(如0-9,.)，他们在键盘映射xml中的keycode值必须配置为该字符的ASCII码
                 editable.insert(start, Character.toString((char) primaryCode));
-            }
-        }
+            } else if (primaryCode > 0x7f) {
+                Keyboard.Key key = getKeyByKeyCode(primaryCode);
+                //可以直接输入的字符(如0-9,.)，他们在键盘映射xml中的keycode值必须配置为该字符的ASCII码
+                editable.insert(start, key.label);
 
+            } else if (primaryCode == EditorInfo.IME_ACTION_DONE) {
+                //其他一些暂未开放的键指令，如next到下一个输入框等指令
+
+            }
     }
 
-    /*private Key getKeyByKeyCode(int primaryCode) {
+    private Keyboard.Key getKeyByKeyCode(int primaryCode) {
         if (null != mKeyboard) {
-            List<Key> keyList = mKeyboard.getKeys();
+            List<Keyboard.Key> keyList = mKeyboard.getKeys();
             for (int i = 0, size = keyList.size(); i < size; i++) {
-                Key key = keyList.get(i);
+                Keyboard.Key key = keyList.get(i);
 
                 int codes[] = key.codes;
 
@@ -336,10 +274,11 @@ public class CityEditText extends EditText implements KeyboardView.OnKeyboardAct
         }
 
         return null;
-    }*/
+    }
 
     @Override
     public void onText(CharSequence text) {
+
     }
 
     @Override
@@ -367,12 +306,21 @@ public class CityEditText extends EditText implements KeyboardView.OnKeyboardAct
         super.onTouchEvent(event);
         requestFocus();
         requestFocusFromTouch();
-
+        if (TextUtils.isEmpty(getText().toString())) {
+            initKeyboard(R.xml.licence_city);
+        } else {
+            if (TextUtils.isEmpty(getText().toString().substring(0, 1))) {
+                initKeyboard(R.xml.licence_city);
+            } else {
+                initKeyboard(R.xml.licence_num);
+                hideSysInput();
+                showKeyboard();
+            }
+        }
         if (isNeedCustomKeyboard) {
             hideSysInput();
             showKeyboard();
         }
-
 
         return true;
     }
@@ -391,16 +339,19 @@ public class CityEditText extends EditText implements KeyboardView.OnKeyboardAct
 
     }
 
+
+    @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
 
-        this.mWindow = ((Activity) getContext()).getWindow();
+        this.mWindow = ((Activity) mContext).getWindow();
         this.mDecorView = this.mWindow.getDecorView();
         this.mContentView = this.mWindow.findViewById(Window.ID_ANDROID_CONTENT);
 
         hideSysInput();
     }
 
+    @Override
     public void onDetachedFromWindow() {
         super.onDetachedFromWindow();
 
@@ -416,14 +367,16 @@ public class CityEditText extends EditText implements KeyboardView.OnKeyboardAct
     }
 
     public void showKeyboard() {
-        if (null != mKeyboardWindow) {
+        if (mKeyboardWindow != null) {
             if (!mKeyboardWindow.isShowing()) {
 
-                mKeyboardView.setKeyboard(mKeyboard);
-                mKeyboardWindow.setBackgroundDrawable(new BitmapDrawable());
-                mKeyboardWindow.setOutsideTouchable(true);
-                mKeyboardWindow.showAtLocation(this.mDecorView, Gravity.BOTTOM, 0, 0);
-                mKeyboardWindow.update();
+                if (mDecorView != null) {
+                    mKeyboardView.setKeyboard(mKeyboard);
+                    mKeyboardWindow.setBackgroundDrawable(new BitmapDrawable());
+                    mKeyboardWindow.setOutsideTouchable(true);
+                    mKeyboardWindow.showAtLocation(this.mDecorView, Gravity.BOTTOM, 0, 0);
+                    mKeyboardWindow.update();
+                }
 
                 /*if (null != mDecorView && null != mContentView) {
                     int[] pos = new int[2];
@@ -447,7 +400,7 @@ public class CityEditText extends EditText implements KeyboardView.OnKeyboardAct
         }
     }
 
-    private void hideKeyboard() {
+    public void hideKeyboard() {
         if (null != mKeyboardWindow) {
             if (mKeyboardWindow.isShowing()) {
                 mKeyboardWindow.dismiss();
@@ -464,41 +417,36 @@ public class CityEditText extends EditText implements KeyboardView.OnKeyboardAct
     }
 
     private void hideSysInput() {
-        if (this.getWindowToken() != null) {
-            InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(this.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        if (this != null) {
+            if (this.getWindowToken() != null) {
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(this.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }
         }
     }
 
+    private TextWatcher textChangedListener = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-    /*class KeyModel {
-        private Integer code;
-        private String label;
-
-        public KeyModel(Integer code, String label) {
-            this.code = code;
-            this.label = label;
-        }
-
-        public String getLabel() {
-            return label;
-        }
-c
-        public void setLabel(String label) {
-            this.label = label;
-        }
-
-        public Integer getCode() {
-            return code;
-        }
-
-        public void setCode(Integer code) {
-            this.code = code;
         }
 
         @Override
-        public String toString() {
-            return "code:" + code + "," + "label:" + label;
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
         }
-    }*/
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            if(!TextUtils.isEmpty(s.toString())) {
+                initKeyboard(R.xml.licence_num);
+                hideSysInput();
+                showKeyboard();
+            } else {
+                initKeyboard(R.xml.licence_city);
+                hideSysInput();
+                showKeyboard();
+            }
+        }
+    };
 }

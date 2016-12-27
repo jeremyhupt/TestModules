@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-    android:horizontalGap="1px"
-    android:keyHeight="8%p"
-    android:keyWidth="11%p"
-    android:verticalGap="1px">
+    android:horizontalGap="5.5dp"
+    android:keyHeight="7%p"
+    android:keyWidth="9.5%p"
+    android:verticalGap="5.5dp">
 
     <Row>
         <Key
             android:codes="20140"
+            android:keyEdgeFlags="left"
             android:keyLabel="京" />
         <Key
             android:codes="27818"
@@ -32,12 +33,14 @@
             android:keyLabel="冀" />
         <Key
             android:codes="35947"
+            android:keyEdgeFlags="right"
             android:keyLabel="豫" />
     </Row>
 
     <Row>
         <Key
             android:codes="24029"
+            android:keyEdgeFlags="left"
             android:keyLabel="川" />
         <Key
             android:codes="28189"
@@ -62,12 +65,14 @@
             android:keyLabel="湘" />
         <Key
             android:codes="36195"
+            android:keyEdgeFlags="right"
             android:keyLabel="赣" />
     </Row>
 
     <Row>
         <Key
             android:codes="38397"
+            android:keyEdgeFlags="left"
             android:keyLabel="闽" />
         <Key
             android:codes="38485"
@@ -92,12 +97,14 @@
             android:keyLabel="云" />
         <Key
             android:codes="26690"
+            android:keyEdgeFlags="right"
             android:keyLabel="桂" />
     </Row>
 
     <Row>
         <Key
             android:codes="29756"
+            android:keyEdgeFlags="left"
             android:keyLabel="琼" />
         <Key
             android:codes="38738"
@@ -114,15 +121,6 @@
         <Key
             android:codes="28595"
             android:keyLabel="澳" />
-        <Key
-            android:codes="32"
-            android:keyLabel=" " />
-        <Key
-            android:codes="32"
-            android:keyLabel=" " />
-        <Key
-            android:codes="32"
-            android:keyLabel=" " />
     </Row>
 
 </Keyboard>

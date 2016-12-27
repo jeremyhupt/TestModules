@@ -62,4 +62,26 @@
     <color name="keyboard_bg_color">#bdbdbd</color>
 
     <color name="text_gray">#979797</color>
+
+    <!--标题等主要文字-->
+    <color name="title_and_main_text">#de000000</color>
+
+    <!--正文或次要文字-->
+    <color name="straight_matter_and_secondary_text">#8a000000</color>
+
+    <!--主要按钮或控件点击状态-->
+    <color name="cursor_orange">#ff7043</color>
+
+    <color name="bg_gray">#e1e1e1</color>
+
+    <color name="divider">#d5d5d5</color>
+
+    <color name="gray_yjf">#D9D9D9</color>
+
+    <!--正文或次要文字-->
+    <color name="text_color_subheading">#8a000000</color>
+    <color name="keyboard_bg">#cbd1d8</color>
+
+    <drawable name="kayboard_text_color">#ff000000</drawable>
+    <drawable name="kayboard_text_color_press">#ffffffff</drawable>
 </resources>

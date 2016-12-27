@@ -8,7 +8,6 @@ import android.inputmethodservice.KeyboardView;
 import android.inputmethodservice.KeyboardView.OnKeyboardActionListener;
 import android.text.Editable;
 import android.view.View;
-import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 
 import java.util.List;
@@ -24,19 +23,15 @@ public class KeyboardUtil {
 
 	private EditText ed;
 
-	public KeyboardUtil(Activity act, Context ctx, EditText edit) {
-		this.act = act;
-		this.ctx = ctx;
-		this.ed = edit;
-		k1 = new Keyboard(ctx, R.xml.licence_city);
-		k2 = new Keyboard(ctx, R.xml.licence_num);
-		keyboardView = (KeyboardView) act.findViewById(R.id.keyboard_view);
-		keyboardView.startAnimation(AnimationUtils.loadAnimation(
-				ctx, R.anim.anim_keyboard));
+	public KeyboardUtil(KeyboardView keyboardView1, EditText editText) {
+		super();
+		keyboardView = keyboardView1;
+		this.ed = editText;
+		keyboardView.setOnKeyboardActionListener(listener);
+		k1 = new Keyboard(editText.getContext(), R.xml.qwerty);
 		keyboardView.setKeyboard(k1);
 		keyboardView.setEnabled(true);
 		keyboardView.setPreviewEnabled(true);
-		keyboardView.setOnKeyboardActionListener(listener);
 	}
 
 	private OnKeyboardActionListener listener = new OnKeyboardActionListener() {
@@ -105,7 +100,7 @@ public class KeyboardUtil {
 			}
 		}
 	};
-	
+
 	/**
 	 * 键盘大小写切换
 	 */
@@ -136,8 +131,8 @@ public class KeyboardUtil {
             keyboardView.setVisibility(View.VISIBLE);
         }
     }
-    
-    public void hideKeyboard() {
+
+	public void hideKeyboard() {
         int visibility = keyboardView.getVisibility();
         if (visibility == View.VISIBLE) {
             keyboardView.setVisibility(View.INVISIBLE);

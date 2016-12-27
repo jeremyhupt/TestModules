@@ -19,7 +19,8 @@
 
         <activity android:name=".dialog.DialogActivity" />
 
-        <activity android:name=".edittext.EditTextActivity" />
+        <activity android:name=".edittext.EditTextActivity"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"/>
 
         <activity android:name=".platenumber.PlateNumberActivity" />
 
