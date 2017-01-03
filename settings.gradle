@@ -1,1 +1,1 @@
-include ':app', ':dbflowtest', ':keyboardtest'
+include ':app', ':dbflowtest', ':keyboardtest', ':recyclerviewtest', ':vrdeveloptest', ':ryanutils'

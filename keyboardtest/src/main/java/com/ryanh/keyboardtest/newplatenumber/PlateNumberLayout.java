@@ -197,7 +197,6 @@ public class PlateNumberLayout extends LinearLayout {
 
     private void initNumKeyboard(int xmlLayoutResId) {
         if (mXmlLayoutResId != xmlLayoutResId) {
-            Log.i(TAG, "initKeyboard");
             hideKeyboard();
             mKeyboard = new Keyboard(mContext, xmlLayoutResId);
             mKeyboardView = (MyKeyboardView) LayoutInflater.from(mContext).inflate(R.layout.view_keyboard, null);
