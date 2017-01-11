@@ -5,8 +5,10 @@
       <module fileurl="file://$PROJECT_DIR$/TestModules.iml" filepath="$PROJECT_DIR$/TestModules.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/dbflowtest/dbflowtest.iml" filepath="$PROJECT_DIR$/dbflowtest/dbflowtest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/imagetest/imagetest.iml" filepath="$PROJECT_DIR$/imagetest/imagetest.iml" />
       <module fileurl="file://$PROJECT_DIR$/keyboardtest/keyboardtest.iml" filepath="$PROJECT_DIR$/keyboardtest/keyboardtest.iml" />
       <module fileurl="file://$PROJECT_DIR$/recyclerviewtest/recyclerviewtest.iml" filepath="$PROJECT_DIR$/recyclerviewtest/recyclerviewtest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rxjavatest/rxjavatest.iml" filepath="$PROJECT_DIR$/rxjavatest/rxjavatest.iml" />
       <module fileurl="file://$PROJECT_DIR$/ryanutils/ryanutils.iml" filepath="$PROJECT_DIR$/ryanutils/ryanutils.iml" />
       <module fileurl="file://$PROJECT_DIR$/vrdeveloptest/vrdeveloptest.iml" filepath="$PROJECT_DIR$/vrdeveloptest/vrdeveloptest.iml" />
     </modules>

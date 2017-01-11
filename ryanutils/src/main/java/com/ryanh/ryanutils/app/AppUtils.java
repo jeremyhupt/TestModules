@@ -10,27 +10,26 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.drawable.Drawable;
 
-import com.ryanh.ryanutils.utils.CleanUtils;
-import com.ryanh.ryanutils.utils.EncryptUtils;
+import com.ryanh.ryanutils.commonutils.CleanUtils;
+import com.ryanh.ryanutils.commonutils.EncryptUtils;
+import com.ryanh.ryanutils.commonutils.IntentUtils;
+import com.ryanh.ryanutils.commonutils.LogUtils;
+import com.ryanh.ryanutils.commonutils.ProcessUtils;
+import com.ryanh.ryanutils.commonutils.ShellUtils;
+import com.ryanh.ryanutils.commonutils.StringUtils;
+import com.ryanh.ryanutils.commonutils.Utils;
 import com.ryanh.ryanutils.utils.FileUtils;
-import com.ryanh.ryanutils.utils.IntentUtils;
-import com.ryanh.ryanutils.utils.LogUtils;
-import com.ryanh.ryanutils.utils.ProcessUtils;
-import com.ryanh.ryanutils.utils.ShellUtils;
-import com.ryanh.ryanutils.utils.StringUtils;
-import com.ryanh.ryanutils.utils.Utils;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/2
- *     desc  : App相关工具类
- * </pre>
+ * Author:胡仲俊
+ * Date: 2017 - 01 - 03
+ * Des: App相关工具类
+ * FIXME
+ * Todo
  */
 public class AppUtils {
 

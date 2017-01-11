@@ -6,17 +6,16 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 
-import com.ryanh.ryanutils.utils.IntentUtils;
+import com.ryanh.ryanutils.commonutils.IntentUtils;
 
 import java.util.List;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/9/23
- *     desc  : Activity相关工具类
- * </pre>
+ * Author:胡仲俊
+ * Date: 2017 - 01 - 03
+ * Des:
+ * FIXME
+ * Todo
  */
 public class ActivityUtils {
 

@@ -2,14 +2,13 @@ package com.ryanh.keyboardtest;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.AdapterView;
 
 import com.ryanh.keyboardtest.dialog.DialogActivity;
 import com.ryanh.keyboardtest.edittext.EditTextActivity;
 import com.ryanh.keyboardtest.platenumber.PlateNumberActivity;
-import com.ryanh.ryanutils.activity.BaseListActivity;
+import com.ryanh.ryanutils.activity.BaseRecyclerActivity;
 
-public class MainActivity extends BaseListActivity {
+public class MainActivity extends BaseRecyclerActivity {
 
     @Override
     protected String[] setDatas() {
@@ -22,6 +21,30 @@ public class MainActivity extends BaseListActivity {
     }
 
     @Override
+    protected View.OnClickListener setOnItemClickListener(int position) {
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (position) {
+                    case 0:
+                        startActivity(new Intent(MainActivity.this, PlateNumberActivity.class));
+                        break;
+                    case 1:
+                        startActivity(new Intent(MainActivity.this, EditTextActivity.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(MainActivity.this, DialogActivity.class));
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        };
+        return onClickListener;
+    }
+
+    /*@Override
     protected AdapterView.OnItemClickListener setOnItemClickListener() {
         AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
             @Override
@@ -43,6 +66,6 @@ public class MainActivity extends BaseListActivity {
             }
         };
         return listener;
-    }
+    }*/
 
 }
