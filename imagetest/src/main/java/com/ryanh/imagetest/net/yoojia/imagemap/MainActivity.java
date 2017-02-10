@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.widget.Toast;
 
 import com.ryanh.imagetest.R;
@@ -13,6 +14,7 @@ import com.ryanh.imagetest.net.yoojia.imagemap.support.PolyShape;
 import com.ryanh.imagetest.net.yoojia.imagemap.support.RectShape;
 import com.ryanh.imagetest.net.yoojia.imagemap.support.Shape;
 import com.ryanh.imagetest.net.yoojia.imagemap.support.ShapeExtension;
+
 
 public class MainActivity extends Activity {
 
@@ -71,6 +73,17 @@ public class MainActivity extends Activity {
         Shape white = new PolyShape("white", 0x8962a0);
         white.setValues(559, 270, 599, 239, 627, 265, 642, 267, 668, 266, 680, 294, 664, 303, 669, 323, 690, 325, 712, 310, 720, 311, 713, 335, 715, 369, 722, 390, 744, 443, 745, 456, 717, 475, 673, 481, 636, 477, 604, 458, 586, 439, 591, 423, 590, 398, 571, 336, 561, 273);
         map.addShape(white);
+
+        DebugLog.i("123","DSJFKJDK");
+
+        getName("123","456");
+
+    }
+
+    @hugo.weaving.DebugLog
+    public String getName(String first, String last) {
+        SystemClock.sleep(15); // Don't ever really do this!
+        return first + " " + last;
     }
 
 }

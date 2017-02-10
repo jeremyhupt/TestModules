@@ -15,30 +15,18 @@
  */
 package com.ryanh.ryanutils.commonutils;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-
-import org.apache.http.client.CookieStore;
-import org.apache.http.cookie.Cookie;
-import org.apache.http.impl.cookie.BasicClientCookie;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+//import org.apache.http.client.CookieStore;
+//import org.apache.http.cookie.Cookie;
+//import org.apache.http.impl.cookie.BasicClientCookie;
 
 /**
  * A CookieStore impl, it's save cookie to SharedPreferences.
  *
  * @author jingle1267@163.com
  */
+
+//TODO httpclient报错
+/*
 public class PreferencesCookieStore implements CookieStore {
 
     private static final String COOKIE_PREFS = "CookiePrefsFile";
@@ -48,9 +36,11 @@ public class PreferencesCookieStore implements CookieStore {
     private final ConcurrentHashMap<String, Cookie> cookies;
     private final SharedPreferences cookiePrefs;
 
-    /**
+    */
+/**
      * Construct a persistent cookie store.
-     */
+     *//*
+
     public PreferencesCookieStore(Context context) {
         cookiePrefs = context.getSharedPreferences(COOKIE_PREFS,
                 Context.MODE_PRIVATE);
@@ -242,4 +232,4 @@ public class PreferencesCookieStore implements CookieStore {
             clientCookie.setSecure(in.readBoolean());
         }
     }
-}
+}*/

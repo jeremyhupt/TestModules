@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/dbflowtest" />
+            <option value="$PROJECT_DIR$/designpatterntest" />
             <option value="$PROJECT_DIR$/imagetest" />
             <option value="$PROJECT_DIR$/keyboardtest" />
             <option value="$PROJECT_DIR$/recyclerviewtest" />

@@ -1,1 +1,1 @@
-include ':app', ':dbflowtest', ':keyboardtest', ':recyclerviewtest', ':vrdeveloptest', ':ryanutils', ':rxjavatest', ':imagetest'
+include ':app', ':dbflowtest', ':keyboardtest', ':recyclerviewtest', ':vrdeveloptest', ':ryanutils', ':rxjavatest', ':imagetest', ':designpatterntest'

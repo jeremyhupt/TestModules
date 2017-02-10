@@ -26,25 +26,21 @@ import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.text.TextUtils;
-import android.util.Log;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 import java.util.Locale;
+
+//import org.apache.http.HttpEntity;
+//import org.apache.http.HttpResponse;
+//import org.apache.http.client.HttpClient;
+//import org.apache.http.client.methods.HttpGet;
+//import org.apache.http.impl.client.DefaultHttpClient;
+//import org.apache.http.params.BasicHttpParams;
 
 /**
  * 根据经纬度查询地址信息和根据地址信息查询经纬度
@@ -77,7 +73,8 @@ public final class LocationUtils {
      * @param address 地址信息
      * @return 经纬度数组
      */
-    public static double[] getLocationInfo(String address) {
+    //TODO httpclient报错
+    /*public static double[] getLocationInfo(String address) {
         if (TextUtils.isEmpty(address)) {
             return null;
         }
@@ -121,7 +118,7 @@ public final class LocationUtils {
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 
     /**
      * 根据经纬度获取对应的地址
@@ -132,7 +129,7 @@ public final class LocationUtils {
      * @return 地址信息
      * @throws Exception
      */
-    public static String getAddress(double longitude, double latitude,
+    /*public static String getAddress(double longitude, double latitude,
                                     String lang) throws Exception {
         if (DEBUG) {
             LogUtils.d(TAG, "location : (" + longitude + "," + latitude + ")");
@@ -175,7 +172,7 @@ public final class LocationUtils {
             LogUtils.d(TAG, "address : " + address);
         }
         return address;
-    }
+    }*/
 
     /**
      * 根据Google API 解析出国家和城市名称
